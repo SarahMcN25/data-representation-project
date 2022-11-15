@@ -1,11 +1,14 @@
 # This program creates an application server that will implement a RESTful API. 
-# Author: Sarah McNelis
+# Author: Sarah McNelis - G00398343
 
 # Code adapted from W8 lecture and labs: <https://web.microsoftstream.com/video/c575feed-7ee1-4eec-b70e-c1b49204146c?list=studio> 
 
+
 from flask import Flask, url_for, request, redirect, abort, jsonify
 
+
 app = Flask(__name__, static_url_path='', static_folder='staticpages')
+
 
 # Dummy array for testing
 arrivals=[
@@ -14,6 +17,7 @@ arrivals=[
         {"ID":3, "Airline":"Delta Airlines", "Origin": "ATL", "Destination":"SNN", "Flight Number":"DL206" },
         {"ID":4, "Airline":"American Airlines", "Origin": "PHL", "Destination":"SNN", "Flight Number":"AA089" }
 ]
+
 
 nextId = 5 
 
@@ -49,7 +53,7 @@ def findById(id):
 
 
 # CREATE AN ARRIVAL
-# curl -X POST -H "content-type:application/json" -d "{\"Airline\":\"New Airline\", \"Origin\":\"new origin\", \"Destination\":\"new destination\", \"Flight Number\":\"new flight number\"}"  http://127.0.0.1:5000/arrivals
+# curl -X POST -H "content-type:application/json" -d "{\"Airline\":\"EasyJet\", \"Origin\":\"CDG\", \"Destination\":\"SNN\", \"Flight Number\":\"EZY6771\"}"  http://127.0.0.1:5000/arrivals
 @app.route('/arrivals', methods=['POST'])
 def create():
     #return "served by create()" # debug
@@ -73,7 +77,7 @@ def create():
 
 
 # UPDATE AN ARRIVAL
-#  curl -X PUT -H "content-type:application/json" -d "{\"Airline\":\"update Airline\", \"Origin\":\"update origin\", \"Destination\":\"update destination\", \"Flight Number\":\"update flight number\"}"  http://127.0.0.1:5000/arrivals/1
+#  curl -X PUT -H "content-type:application/json" -d "{\"Airline\":\"Lufthansa\", \"Origin\":\"FRA\", \"Destination\":\"SNN\", \"Flight Number\":\"LH401\"}"  http://127.0.0.1:5000/arrivals/1
 @app.route('/arrivals/<int:id>', methods=['PUT'])
 def update(id):
     #return "served by update with id " + str(id) #debug

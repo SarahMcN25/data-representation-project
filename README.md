@@ -1,12 +1,12 @@
 # Assessment: Data Representation Project
 
-by Sarah McNelis
+by Sarah McNelis - G00398343
 
 <br>
 
 ## Introduction
 
-This repository contains my project for the module Data Representation as part of my Higher Diploma in Computing in Data Analytics. 
+This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. 
 
 <br>
 
@@ -23,12 +23,19 @@ This repository contains my project for the module Data Representation as part o
 1. 
 2. 
 
+### Requirements text file
+
+`requirements.txt` contains a list of all the python packages requried to import in order to run the progamme. 
 
 <br>
 
 ## What to expect
 
 This repository contains ...
+
+This repository contains `rest_server.py` which creates an application server that will implement a RESTful API. 
+
+
 
 <br>
 
