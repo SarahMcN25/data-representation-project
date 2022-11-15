@@ -1,4 +1,4 @@
-# Assessment: Data Representation
+# Assessment: Data Representation Project
 
 by Sarah McNelis
 
@@ -46,4 +46,4 @@ This repository contains ...
 
 <br>
 
-# End
+## End
