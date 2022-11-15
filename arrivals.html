@@ -1,4 +1,6 @@
-<!-- This html contains a webpage that can consume the API by performing CRUD operations on the data -->
+<!-- This file contains a html webpage that can consume an API by performing CRUD operations -->
+<!-- Author: Sarah McNelis - G00398343 -->
+
 <html>
 	<head>
 		<title>Arrivals</title>
@@ -14,7 +16,7 @@
 		<h1>Arrivals at Shannon Airport<h1>
 		
 		<div>
-			<table border="1" class="table">
+			<table border="2" class="table table-hover">
 			
 				<tr>
 					
@@ -166,147 +168,147 @@
 		
 	</body>
 
-<script>
+	<script>
 
-	// GET ALL ARRIVALS
-	function getAll(callback){
-		$.ajax({
-			"url": " http:// ",
-			"method":"GET",
-			"data":"",
-			"dataType": "JSON",
-			"success":function(result){
-				//console.log(result);
-				callback(result)
+		// GET ALL ARRIVALS
+		function getAll(callback){
+			$.ajax({
+				"url": " http:// ",
+				"method":"GET",
+				"data":"",
+				"dataType": "JSON",
+				"success":function(result){
+					//console.log(result);
+					callback(result)
 
-		},
-		"error":function(xhr,status,error){
-			console.log("error: "+status+" msg:"+error);
-		}
-		});
-	}
-		
-		function processGetAll(result){
-			console.log("in process")
-			console.log(result)
-		}
-		
-		// test
-		getAll(processGetAll) 
-
-
-	// FIND ARRIVAL BY ID 
-	function findById(arrival, callback){
-		$.ajax({
-			"url": " http:// ",
-			"method":"GET",
-			"data":"",
-			"dataType": "JSON",
-			"success":function(result){
-				//console.log(result);
-				callback(result)
-
-		},
-		"error":function(xhr,status,error){
-			console.log("error: "+status+" msg:"+error);
-		}
-		});
-	}
-		
-		function processFindByIdResponse(result){
-			console.log("in process")
-			console.log(result)
-		}
-		
-		// test
-		findById(2, processFindByIdResponse)
-
-
-	// CREATE ARRIVAL
-	function createArrival(arrival, callback){
-		//console.log(JSON.stringify(arrival));
-		$.ajax({
-			"url": " ",
-			"method":"POST",
-			"data":JSON.stringify(arrival),
-			"dataType": "JSON",
-			contentType: "application/json; charset=utf-8",
-			"success":function(result){
-				//console.log(result);
-				callback(result)
 			},
 			"error":function(xhr,status,error){
 				console.log("error: "+status+" msg:"+error);
 			}
-		});
-	}
-
-	function processCreateResponse(result){
-		console.log(result)
-	}
-	
-	// test 
-	arrival = {"Airline":"EasyJet", "Origin":"CDG", "Destination":"SNN", "Flight Number":"EZY6771"}
-	createArrival(arrival, processCreateResponse)
-		
-		
-	// UPDATE ARRIVAL
-	function updateArrival(arrival, callback){
-		//console.log(JSON.stringify(book));
-		$.ajax({
-			"url": " ",
-			"method":"PUT",
-			"data":JSON.stringify(arrival),
-			"dataType": "JSON",
-			contentType: "application/json; charset=utf-8",
-			"success":function(result){
-				//console.log(result);
-				callback(result)
+			});
+		}
 			
-			},
-			"error":function(xhr,status,error){
-				console.log("error: "+status+" msg:"+error);
+			function processGetAll(result){
+				console.log("in process")
+				console.log(result)
 			}
-		});
-	}
-	
-	function processUpdateResponse(result){
-		console.log(result)
-	}
-	
-	// test 
-	arrival = {"Airline":"Lufthansa", "Origin":"FRA", "Destination":"SNN", "Flight Number":"LH401"}
-	updateArrival(arrival, processUpdateResponse)
 			
-		
-	// DELETE ARRIVAL
-	function deleteArrival(arrival, callback){
-		//console.log(JSON.stringify(book));
-		$.ajax({
-			"url": " ",
-			"method":"DELETE",
-			"data":"",
-			"dataType": "JSON",
-			contentType: "application/json; charset=utf-8",
-			"success":function(result){
-				//console.log(result);
-				callback(result)
+			// test
+			getAll(processGetAll) 
+
+
+		// FIND ARRIVAL BY ID 
+		function findById(arrival, callback){
+			$.ajax({
+				"url": " http:// ",
+				"method":"GET",
+				"data":"",
+				"dataType": "JSON",
+				"success":function(result){
+					//console.log(result);
+					callback(result)
 
 			},
 			"error":function(xhr,status,error){
 				console.log("error: "+status+" msg:"+error);
 			}
-		});
-	}
-		
-		function processDeleteResponse(result){
-			console.log("in process delete")
+			});
+		}
+			
+			function processFindByIdResponse(result){
+				console.log("in process")
+				console.log(result)
+			}
+			
+			// test
+			findById(2, processFindByIdResponse)
+
+
+		// CREATE ARRIVAL
+		function createArrival(arrival, callback){
+			//console.log(JSON.stringify(arrival));
+			$.ajax({
+				"url": " ",
+				"method":"POST",
+				"data":JSON.stringify(arrival),
+				"dataType": "JSON",
+				contentType: "application/json; charset=utf-8",
+				"success":function(result){
+					//console.log(result);
+					callback(result)
+				},
+				"error":function(xhr,status,error){
+					console.log("error: "+status+" msg:"+error);
+				}
+			});
+		}
+
+		function processCreateResponse(result){
 			console.log(result)
 		}
 		
-		// test
-		deleteArrival(2, processUpdateResponse)
+		// test 
+		arrival = {"Airline":"EasyJet", "Origin":"CDG", "Destination":"SNN", "Flight Number":"EZY6771"}
+		createArrival(arrival, processCreateResponse)
+			
+			
+		// UPDATE ARRIVAL
+		function updateArrival(arrival, callback){
+			//console.log(JSON.stringify(book));
+			$.ajax({
+				"url": " ",
+				"method":"PUT",
+				"data":JSON.stringify(arrival),
+				"dataType": "JSON",
+				contentType: "application/json; charset=utf-8",
+				"success":function(result){
+					//console.log(result);
+					callback(result)
+				
+				},
+				"error":function(xhr,status,error){
+					console.log("error: "+status+" msg:"+error);
+				}
+			});
+		}
+		
+		function processUpdateResponse(result){
+			console.log(result)
+		}
+		
+		// test 
+		arrival = {"Airline":"Lufthansa", "Origin":"FRA", "Destination":"SNN", "Flight Number":"LH401"}
+		updateArrival(arrival, processUpdateResponse)
+				
+			
+		// DELETE ARRIVAL
+		function deleteArrival(arrival, callback){
+			//console.log(JSON.stringify(book));
+			$.ajax({
+				"url": " ",
+				"method":"DELETE",
+				"data":"",
+				"dataType": "JSON",
+				contentType: "application/json; charset=utf-8",
+				"success":function(result){
+					//console.log(result);
+					callback(result)
 
-</script>
+				},
+				"error":function(xhr,status,error){
+					console.log("error: "+status+" msg:"+error);
+				}
+			});
+		}
+			
+			function processDeleteResponse(result){
+				console.log("in process delete")
+				console.log(result)
+			}
+			
+			// test
+			deleteArrival(2, processUpdateResponse)
+
+	</script>
 
 </html>
