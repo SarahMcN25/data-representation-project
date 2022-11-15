@@ -9,16 +9,14 @@ by Sarah McNelis - G00398343
 This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. 
 
 <br>
-
+ 
 ## Setup
 
 ### Install the following
 
 1. Download and install [anaconda](https://docs.anaconda.com/anaconda/install/index.html).
 2. Download and install [cmder](https://cmder.app/).
-3. Download and install [Notepad++](https://notepad-plus-plus.org/downloads/)
-
-<br>
+3. Download and install [notepad++](https://notepad-plus-plus.org/downloads/)
 
 ### Running a python file
 1. Open the command line at the appropriate respository. 
@@ -32,7 +30,7 @@ This repository contains my project work for Data Representation as part of my H
 
 ### Requirements text file
 
-`requirements.txt` contains a list of all the python packages requried to import in order to run the progamme. 
+`requirements.txt` contains a list of all the python packages requried to import in order to run the progam. 
 
 ### Hosting the server
 
@@ -56,7 +54,6 @@ This repository also contains ...
 ## Credits
 
 - For this project I heavely relied on my lecturer's notes. You can access his github repository [here](https://github.com/andrewbeattycourseware/datarepresentation).
-
 
 
 <br>

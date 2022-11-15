@@ -18,7 +18,7 @@ arrivals=[
         {"ID":4, "Airline":"American Airlines", "Origin": "PHL", "Destination":"SNN", "Flight Number":"AA089" }
 ]
 
-
+ 
 nextId = 5 
 
 
