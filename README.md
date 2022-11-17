@@ -35,7 +35,7 @@ This repository contains my project work for Data Representation as part of my H
 2. Click View on the toolbar
 3. And click View Current File in and choose your preferred browser. 
 
-### Accessing database table
+### Accessing MySQL database table
 
 1. Open wampserver
 2. Click on MySQL
@@ -43,7 +43,11 @@ This repository contains my project work for Data Representation as part of my H
 4. Once the console is open type `SHOW DATABASES;`
 5. Now type `USE arrivals_at_snn`
 6. Once you are in the database type `SHOW TABLES;`. This shows all tables available within that database. 
-7. To see the arrivals table type `SELECT * FROM arrivals;`. This will produce an arrivals table. This table will be accessed and updated using SQL commands in my python scripts. See `arrivalsDAO.py` and `link_to_db.py`.
+7. To see the arrivals table type `SELECT * FROM arrivals;`. This will produce an arrivals table as you can see in the image below. 
+8. This table will be accessed and updated using SQL commands in my python scripts. See `arrivalsDAO.py` and execute `link_to_db.py`.
+
+![arrivals_table](db.jpg)
+
 
 ### Hosting the server
 
