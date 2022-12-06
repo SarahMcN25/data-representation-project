@@ -3,21 +3,22 @@
 # Author: Sarah McNelis - G00398343
 
 import mysql.connector
+import config as cfg
 
 class ArrivalsDAO:
-    host =""
+    host = ""
     user = ""
-    password =""
-    database =""
+    password = ""
+    database = ""
     connection = ""
-    cursor =""
+    cursor = ""
 
     def __init__(self): 
         # COME BACK TO THIS!!!!! SHOULD BE READ IN FROM CONFIG FILE!!!!! SEE W5/6
-        self.host="localhost"
-        self.user="root"
-        self.password=""
-        self.database="arrivals_at_snn"
+        self.host = cfg.mysql['host']
+        self.user = cfg.mysql['user']
+        self.password = cfg.mysql['password']
+        self.database = cfg.mysql['database']
     
     # GET CURSOR - MAKE CONNECTION 
     def getCursor(self): 
