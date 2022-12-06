@@ -91,5 +91,39 @@ class ArrivalsDAO:
         self.closeAll
         print("Arrival deleted")
 
+    
+    # CREATE A DATABASE
+    def createDatabase(self):
+        self.connection = mysql.connector.connect(
+            host=       self.host,
+            user=       self.user,
+            password=   self.password   
+        )
+        self.cursor = self.connection.cursor()
+        sql="CREATE DATABASE "+ self.database
+        self.cursor.execute(sql)
+        self.connection.commit()
+        self.closeAll()
+
+
+    # CREATE A DATABASE TABLE
+    def createtable(self):
+        cursor = self.getcursor()
+        sql="CREATE TABLE arrivals (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, airline varchar(250), origin varchar(3), destination varchar(3), flightnumber varchar(10))"
+        cursor.execute(sql)
+        self.connection.commit()
+        self.closeAll()
+
 
 arrivalsDAO = ArrivalsDAO()
+
+'''
+# TEST
+ if __name__ == "__main__":
+    # Once off setting up DB and table
+#   arrivalsDAO.createDatabase()
+#   arrivalsDAO.createTable()
+    data = ('British Airways', 'BHX', 'SNN', 'BA6774')
+    arrivalsDAO.create(data)
+    print("It works!")
+'''
