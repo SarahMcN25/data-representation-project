@@ -4,168 +4,49 @@
 <html>
 	<head>
 		<title>Arrivals</title>
-	
+
+		<!-- Ajax -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-		
-		<!-- CSS -->
+
+		<!-- Bootstrap -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-	
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+		<!-- JavaScript Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+		
+
 	</head>
 	
-	<body>
-		<h1>Arrivals at Shannon Airport<h1>
-		
-		<div>
-			<table border="2" class="table table-hover">
-			
-				<tr>
-					
-					<th>ID</th>
-					<th>Airline</th> 
-					<th>Origin</th>
-					<th>Destination</th>
-					<th>Flight Number</th>
-					<th>Scheduled Arrival</th>
-					<th>Actual Arrival</th>
-					
-				</tr>
-				
-				<tr>
-				
-					<td>1</td>
-					<td>AerLingus</td>
-					<td>JFK</td>
-					<td>SNN</td>
-					<td>EI110</td>
-					<td>06:00</td>
-					<td>05:19</td>
+	<body >
 
-				</tr>
-				
-				<tr>
-					
-					<td>2</td>
-					<td>Ryanair</td>
-					<td>STN</td>
-					<td>SNN</td>
-					<td>FR310</td>
-					<td>10:05</td>
-					<td>09:52</td>
-
-				</tr>
-				
-				<tr>
-				
-					<td>3</td>
-					<td>AerLingus</td>
-					<td>LHR</td>
-					<td>SNN</td>
-					<td>EI381</td>
-					<td>11:30</td>
-					<td>11:15</td>
-
-				</tr>
-				
-				<tr>
-				
-					<td>4</td>
-					<td>Air Canada</td>
-					<td>YYZ</td>
-					<td>SNN</td>
-					<td>AC856</td>
-					<td>12:05</td>
-					<td>12:26</td>
-
-				</tr>
-				
-				<tr>
-				
-					<td>5</td>
-					<td>Ryanair</td>
-					<td>LGW</td>
-					<td>SNN</td>
-					<td>FR1183</td>
-					<td>14:10</td>
-					<td>14:05</td>
-
-				</tr>
-
-				<tr>
-				
-					<td>6</td>
-					<td>Delta Airlines</td>
-					<td>ATL</td>
-					<td>SNN</td>
-					<td>DL206</td>
-					<td>15:50</td>
-					<td>15:42</td>
-
-				</tr>
-
-				<tr>
-				
-					<td>7</td>
-					<td>American Airlines</td>
-					<td>PHL</td>
-					<td>SNN</td>
-					<td>AA089</td>
-					<td>15:50</td>
-					<td>15:42</td>
-
-				</tr>
-				
-				<tr>
-				
-					<td>8</td>
-					<td>Lufthansa</td>
-					<td>FRA</td>
-					<td>SNN</td>
-					<td>LH8045</td>
-					<td>16:25</td>
-					<td>16:12</td>
-
-				</tr>
-			
-				<tr>
-				
-					<td>9</td>
-					<td>United Airlines</td>
-					<td>EWR</td>
-					<td>SNN</td>
-					<td>UA022</td>
-					<td>18:35</td>
-					<td>18:33</td>
-
-				</tr>
-				
-				<tr>
-				
-					<td>10</td>
-					<td>Ryanair</td>
-					<td>MAN</td>
-					<td>SNN</td>
-					<td>FR8159</td>
-					<td>22:50</td>
-					<td>22:41</td>
-
-				</tr>
-				
-				<tr>
-					
-					<td>11</td>
-					<td>Ryanair</td>
-					<td>FUE</td>
-					<td>SNN</td>
-					<td>FR3369</td>
-					<td>00:20</td>
-					<td>00:38</td>
-
-				</tr>
-				
-			</table>
-			
+		<!-- Pic -->
+		<div align="center">
+			<img src="snnairport.jpeg" alt="Shannon Airport Logo" width="600" height="300">
 		</div>
+
+		<!-- NavBar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		
+			<div class="container-fluid">
+				<a href="#" class="navbar-brand">
+					<img src="logo.jpg" height="28" alt="logo">
+				</a>
+								
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<div class="navbar-nav">
+						<a href="#" class="nav-item nav-link" onclick="getAll()">View Arrivals</a>
+						<a href="#" class="nav-item nav-link" onclick="createArrival()">Create Arrival</a>
+						<a href="#" class="nav-item nav-link" onclick="updateArrival">Update Arrival</a>
+						<a href="#" class="nav-item nav-link" onclick="deleteArrival">Delete Arrival</a>
+					</div>
+						
+				</div>
+				
+			</div>
+		</nav>
+
 	</body>
 
 	<script>

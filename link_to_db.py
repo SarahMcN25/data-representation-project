@@ -1,4 +1,4 @@
-# This program will link commands from classArrivalsDAO.py to my DB. 
+# This program will link commands from arrivalsDAO.py to my DB. 
 # Author: Sarah McNelis - G00398343
 
 from  classFunction import arrivalsDAO

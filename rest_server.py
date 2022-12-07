@@ -5,21 +5,29 @@
 
 
 from flask import Flask, url_for, request, redirect, abort, jsonify
+from arrivalsDAO import arrivalsDAO
 
 
 app = Flask(__name__, static_url_path='', static_folder='staticpages')
 
 
-# Dummy array for testing
+# Arrivals array
 arrivals=[
-        {"ID":1, "Airline":"Ryanair", "Origin": "STN", "Destination":"SNN", "Flight Number":"FR310" },
-        {"ID":2, "Airline":"AerLingus", "Origin": "JFK", "Destination":"SNN", "Flight Number":"EI110" },
-        {"ID":3, "Airline":"Delta Airlines", "Origin": "ATL", "Destination":"SNN", "Flight Number":"DL206" },
-        {"ID":4, "Airline":"American Airlines", "Origin": "PHL", "Destination":"SNN", "Flight Number":"AA089" }
-]
+        {"ID":1, "Airline":"AerLingus", "Origin": "JFK", "Destination":"SNN", "Flight Number":"EI110" },
+        {"ID":2, "Airline":"Ryanair", "Origin": "STN", "Destination":"SNN", "Flight Number":"FR310" },
+        {"ID":3, "Airline":"AerLingus", "Origin": "LHR", "Destination":"SNN", "Flight Number":"EI381" },
+        {"ID":4, "Airline":"Air Canada", "Origin": "YYZ", "Destination":"SNN", "Flight Number":"AC856" }, 
+        {"ID":5 "Airline":"Ryanair", "Origin": "LGW", "Destination":"SNN", "Flight Number":"FR1183" },
+        {"ID":6, "Airline":"Delta Airlines", "Origin": "JFK", "Destination":"SNN", "Flight Number":"DL206" },
+        {"ID":7, "Airline":"American Airlines", "Origin": "PHL", "Destination":"SNN", "Flight Number":"AA089" },
+        {"ID":8, "Airline":"Lufthansa", "Origin": "FRA", "Destination":"SNN", "Flight Number":"LH8045" }, 
+        {"ID":9, "Airline":"United Airlines", "Origin": "EWR", "Destination":"SNN", "Flight Number":"UA022" },
+        {"ID":10, "Airline":"Ryanair", "Origin": "MAN", "Destination":"SNN", "Flight Number":"FR8159" },
+        {"ID":11, "Airline":"Ryanair", "Origin": "FUE", "Destination":"SNN", "Flight Number":"FR3369" }
+        ]
 
  
-nextId = 5 
+nextId = 12 
 
 
 # TEST
@@ -30,16 +38,16 @@ def index():
 
 # GET ALL ARRIVALS
 # curl http://127.0.0.1:5000/arrivals
-@app.route('/arrivals')
+@app.route('/arrivals', methods=['GET'])
 def getAll():
     #return "served by Get All()" #debug
-
     return jsonify(arrivals)
 
 
+'''
 # FIND ARRIVAL BY ID 
 # curl http://127.0.0.1:5000/arrivals/2
-@app.route('/arrivals/<int:id>')
+@app.route('/arrivals/<int:id>', methods=['GET'])
 def findById(id):
     #return "served by find by id with id " + str(id) # debug
 
@@ -50,6 +58,7 @@ def findById(id):
         return jsonify({}), 204
 
     return jsonify(foundArrivals[0])
+'''
 
 
 # CREATE AN ARRIVAL
@@ -70,10 +79,11 @@ def create():
         "Destination": request.json["Destination"],
         "Flight Number": request.json["Flight Number"]
     }
+    newArrival = arrivalsDAO.create(arrival)
     # Append to arrivals, up an id and return in json form. 
-    arrivals.append(arrival)
+    #arrivals.append(arrival)
     nextId += 1
-    return jsonify(arrival)
+    return jsonify(newArrival)
 
 
 # UPDATE AN ARRIVAL
@@ -87,7 +97,8 @@ def update(id):
     if len(foundArrivals) == 0:
         return jsonify({}), 404
 
-    currentArrival = foundArrivals[0]
+    currentArrival = arrivalsDAO.findByID(foundArrivals[0])
+    #currentArrival = foundArrivals[0]
 
     if 'Airline' in request.json:
         currentArrival['Airline'] = request.json['Airline']
