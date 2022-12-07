@@ -1,0 +1,182 @@
+	<div>
+		<h1>Arrivals at Shannon Airport<h1>
+		
+		
+			<table border="2" class="table table-hover">
+			
+				<tr>
+					
+					<th>ID</th>
+					<th>Airline</th> 
+					<th>Origin</th>
+					<th>Destination</th>
+					<th>Flight Number</th>
+					<th>Scheduled Arrival</th>
+					<th>Actual Arrival</th>
+					
+				</tr>
+				
+				<tr>
+				
+					<td>1</td>
+					<td>AerLingus</td>
+					<td>JFK</td>
+					<td>SNN</td>
+					<td>EI110</td>
+					<td>06:00</td>
+					<td>05:19</td>
+
+				</tr>
+				
+				<tr>
+					
+					<td>2</td>
+					<td>Ryanair</td>
+					<td>STN</td>
+					<td>SNN</td>
+					<td>FR310</td>
+					<td>10:05</td>
+					<td>09:52</td>
+
+				</tr>
+				
+				<tr>
+				
+					<td>3</td>
+					<td>AerLingus</td>
+					<td>LHR</td>
+					<td>SNN</td>
+					<td>EI381</td>
+					<td>11:30</td>
+					<td>11:15</td>
+
+				</tr>
+				
+				<tr>
+				
+					<td>4</td>
+					<td>Air Canada</td>
+					<td>YYZ</td>
+					<td>SNN</td>
+					<td>AC856</td>
+					<td>12:05</td>
+					<td>12:26</td>
+
+				</tr>
+				
+				<tr>
+				
+					<td>5</td>
+					<td>Ryanair</td>
+					<td>LGW</td>
+					<td>SNN</td>
+					<td>FR1183</td>
+					<td>14:10</td>
+					<td>14:05</td>
+
+				</tr>
+
+				<tr>
+				
+					<td>6</td>
+					<td>Delta Airlines</td>
+					<td>ATL</td>
+					<td>SNN</td>
+					<td>DL206</td>
+					<td>15:50</td>
+					<td>15:42</td>
+
+				</tr>
+
+				<tr>
+				
+					<td>7</td>
+					<td>American Airlines</td>
+					<td>PHL</td>
+					<td>SNN</td>
+					<td>AA089</td>
+					<td>15:50</td>
+					<td>15:42</td>
+
+				</tr>
+				
+				<tr>
+				
+					<td>8</td>
+					<td>Lufthansa</td>
+					<td>FRA</td>
+					<td>SNN</td>
+					<td>LH8045</td>
+					<td>16:25</td>
+					<td>16:12</td>
+
+				</tr>
+			
+				<tr>
+				
+					<td>9</td>
+					<td>United Airlines</td>
+					<td>EWR</td>
+					<td>SNN</td>
+					<td>UA022</td>
+					<td>18:35</td>
+					<td>18:33</td>
+
+				</tr>
+				
+				<tr>
+				
+					<td>10</td>
+					<td>Ryanair</td>
+					<td>MAN</td>
+					<td>SNN</td>
+					<td>FR8159</td>
+					<td>22:50</td>
+					<td>22:41</td>
+
+				</tr>
+				
+				<tr>
+					
+					<td>11</td>
+					<td>Ryanair</td>
+					<td>FUE</td>
+					<td>SNN</td>
+					<td>FR3369</td>
+					<td>00:20</td>
+					<td>00:38</td>
+
+				</tr>
+				
+			</table>
+			
+		</div>
+		
+		
+		<script>
+		// FIND ARRIVAL BY ID 
+		function findById(arrival, callback){
+			$.ajax({
+				"url": " http:// ",
+				"method":"GET",
+				"data":"",
+				"dataType": "JSON",
+				"success":function(result){
+					//console.log(result);
+					callback(result)
+
+			},
+			"error":function(xhr,status,error){
+				console.log("error: "+status+" msg:"+error);
+			}
+			});
+		}
+			
+			function processFindByIdResponse(result){
+				console.log("in process")
+				console.log(result)
+			}
+			
+			// test
+			findById(2, processFindByIdResponse)
+		</script>

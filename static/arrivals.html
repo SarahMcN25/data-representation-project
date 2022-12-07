@@ -78,31 +78,7 @@
 			getAll(processGetAll) 
 
 
-		// FIND ARRIVAL BY ID 
-		function findById(arrival, callback){
-			$.ajax({
-				"url": " http:// ",
-				"method":"GET",
-				"data":"",
-				"dataType": "JSON",
-				"success":function(result){
-					//console.log(result);
-					callback(result)
 
-			},
-			"error":function(xhr,status,error){
-				console.log("error: "+status+" msg:"+error);
-			}
-			});
-		}
-			
-			function processFindByIdResponse(result){
-				console.log("in process")
-				console.log(result)
-			}
-			
-			// test
-			findById(2, processFindByIdResponse)
 
 
 		// CREATE ARRIVAL

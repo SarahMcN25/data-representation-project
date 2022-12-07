@@ -8,7 +8,7 @@ from flask import Flask, url_for, request, redirect, abort, jsonify
 from arrivalsDAO import arrivalsDAO
 
 
-app = Flask(__name__, static_url_path='', static_folder='staticpages')
+app = Flask(__name__, static_url_path='', static_folder='static')
 
 
 # Arrivals array
@@ -17,7 +17,7 @@ arrivals=[
         {"ID":2, "Airline":"Ryanair", "Origin": "STN", "Destination":"SNN", "Flight Number":"FR310" },
         {"ID":3, "Airline":"AerLingus", "Origin": "LHR", "Destination":"SNN", "Flight Number":"EI381" },
         {"ID":4, "Airline":"Air Canada", "Origin": "YYZ", "Destination":"SNN", "Flight Number":"AC856" }, 
-        {"ID":5 "Airline":"Ryanair", "Origin": "LGW", "Destination":"SNN", "Flight Number":"FR1183" },
+        {"ID":5, "Airline":"Ryanair", "Origin": "LGW", "Destination":"SNN", "Flight Number":"FR1183" },
         {"ID":6, "Airline":"Delta Airlines", "Origin": "JFK", "Destination":"SNN", "Flight Number":"DL206" },
         {"ID":7, "Airline":"American Airlines", "Origin": "PHL", "Destination":"SNN", "Flight Number":"AA089" },
         {"ID":8, "Airline":"Lufthansa", "Origin": "FRA", "Destination":"SNN", "Flight Number":"LH8045" }, 
