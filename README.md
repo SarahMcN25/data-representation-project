@@ -46,7 +46,7 @@ This repository contains my project work for Data Representation as part of my H
 7. To see the arrivals table type `SELECT * FROM arrivals;`. This will produce an arrivals table as you can see in the image below. 
 8. This table will be accessed and updated using SQL commands in my python scripts. See `arrivalsDAO.py` and execute `link_to_db.py`.
 
-![arrivals_table](db.jpg)
+![arrivals_table](images/db.jpg)
 
 
 ### Hosting the server
