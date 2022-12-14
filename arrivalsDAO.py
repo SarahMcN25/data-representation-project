@@ -14,6 +14,7 @@ class ArrivalsDAO:
     cursor = ""
 
 
+    # GET CONFIG DETAILS
     def __init__(self): 
         self.host = cfg.mysql['host']
         self.user = cfg.mysql['user']
@@ -122,11 +123,12 @@ class ArrivalsDAO:
 arrivalsDAO = ArrivalsDAO()
 
 '''
-# TEST
+# MAIN FUNCTION
  if __name__ == "__main__":
     # Once off setting up DB and table
 #   arrivalsDAO.createDatabase()
 #   arrivalsDAO.createTable()
+    # TESTING DATA
     data = ('British Airways', 'BHX', 'SNN', 'BA6774')
     arrivalsDAO.create(data)
     print("It works!")
