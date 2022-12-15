@@ -2,7 +2,9 @@
 <!-- Author: Sarah McNelis - G00398343 -->
 
 <html>
+
 	<head>
+	
 		<title>Arrivals at Shannon Airport</title>
 
 		<!-- Ajax -->
@@ -26,6 +28,7 @@
 
 		<!-- CARD -->
 		<div class="card">
+		
 			<!-- Card header -->
 			<div class="card-header">
 				<h3 align="center">Arrivals at Shannon Airport</h3>
@@ -44,6 +47,8 @@
 								<th scope="col">Origin</th>
 								<th scope="col">Destination</th>
 								<th scope="col">Flight Number</th>
+								<th scope="col">Update</th>
+								<th scope="col">Delete</th>
 							</tr>
 							
 						</thead>
@@ -56,82 +61,272 @@
 
 			<!-- Card footer -->
 			<div class="card-footer">
-			
-				<!-- BUTTON TO DISPLAY CREATE OPTION ALWAYS VISIBLE-->
+				
 				<div>
-				
-					<button id="button-showCreate" onclick="showCreate()">Create an Arrival</button><br/><br/>
-					
+					<button id="showCreateButton" onclick="showCreate()" type="button" class="btn btn-secondary">Create Arrival</button><br/><br/>
+							
 				</div>
+						
+				<div id="createUpdateForm" style="display:none" >
 				
-				<!-- DIV TO DISPLAY DESIRED FORM WHEN SELECTED -->
-				<div id="createUpdateForm" style="display:none">
-
-					<!-- spans are like divs but do not go onto a new line -->
 					<h2><span id="createLabel">Create an</span> <span id="updateLabel">Update an</span> Arrival</h2>
-
-					Id <input type="text" name="id"><br/>
+				
+					<input type="hidden" name="id"/><br/>
 					Airline <input type="text" name="airline"><br/>
 					Origin <input type="text" name="origin"><br/>
 					Destination <input type="text" name="destination"><br/>
 					Flight Number <input type="text" name="flightnumber"><br/><br>	
-
-					<span><button id="button-doCreate" onclick="doCreate()">Create Arrival</button></span>
-					<span><button id="button-doUpdate" onclick="doUpdate()">Update Arrival</button></span>
+					
+					<span><button id="doCreateButton" onclick="doCreate()" type="button" class="btn btn-secondary">Create</button></span>
+					<span><button id="doUpdateButton" onclick="doUpdate()"type="button" class="btn btn-secondary">Update</button></span>
+					 
 
 				</div>
+				
 			</div>
+			
 		</div>
 
 		<script>
-			
-			// Var to store API data in to build my table. 
-			var arrivalsArray = []
-
-			// GET ALL ARRIVALS			
-			$.ajax({
-				"url":"/arrivals",
-				"method":"GET",
-				"data":"",
-				"dataType":"JSON",
-				"success":function(result){
-					arrivalsArray = result
-					// Call function to build my table
-					buildTable(arrivalsArray)
-					console.log(arrivalsArray)
-					
-				},
-				"error":function(xhr,status,error){
-					console.log("status:"+status+" message:"+error);
-				}
-
-			});
-							
 		
-			// Code adapted from <https://www.youtube.com/watch?v=ru_YWeOh2kU> to build my table
-			function buildTable(data){
-				var table = document.getElementById("myTable")
-				// Loop to get all elements 
-				for (var i = 0; i < data.length; i++){
-					var row = 	`
-									<tr>\
-										<td>${data[i].id}</td>\
-										<td>${data[i].airline}</td>\
-										<td>${data[i].origin}</td>\
-										<td>${data[i].destination}</td>\
-										<td>${data[i].flightnumber}</td>\
-									</tr>\
-								`;
-								
-					table.innerHTML += row 
-				}			
+			// Main function
+			function init(){
+			getAll()
 			}
-		
-		
-		
-		
-		
+			
+// ****************************************************************************************************************8
+	function showCreate(){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('myTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
+
+        document.getElementById('createLabel').style.display="inline"
+        document.getElementById('updateLabel').style.display="none"
+
+        document.getElementById('doCreateButton').style.display="block"
+        document.getElementById('doUpdateButton').style.display="none"
+
+    }
+	
+    function showViewAll(){
+        document.getElementById('showCreateButton').style.display="block"
+        document.getElementById('myTable').style.display="block"
+        document.getElementById('createUpdateForm').style.display="none"
+    }
+	
+    function showUpdate(buttonElement){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('myTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
+        document.getElementById('createLabel').style.display="none"
+        document.getElementById('updateLabel').style.display="inline"
+        document.getElementById('doCreateButton').style.display="none"
+        document.getElementById('doUpdateButton').style.display="block"
+
+        var rowElement = buttonElement.parentNode.parentNode 
+        var arrival = getArrivalFromRow(rowElement)
+        populateFormWithArrival(arrival)
+    }
+	
+    function doCreate(){
+        var form = document.getElementById('createUpdateForm')
+
+        var arrival = {}
+       
+        arrival.airline = form.querySelector('input[name="airline"]').value
+        arrival.origin = form.querySelector('input[name="origin"]').value
+        arrival.destination = form.querySelector('input[name="destination"]').value
+		arrival.flightnumber = form.querySelector('input[name="flightnumber"]').value
+        console.log(JSON.stringify(arrival))
+        createArrival(arrival)
+        
+        
+    }
+	
+    function doUpdate(){
+        var arrival = getArrivalFromForm();
+        var rowElement = document.getElementById(arrival.id);
+        updateArrival(arrival);
+        setArrivalInRow(rowElement,arrival);
+       
+        clearForm();
+        showViewAll();
+    }
+	
+    function doDelete(r){
+        var tableElement = document.getElementById('myTable');
+        var rowElement = r.parentNode.parentNode;
+        var index = rowElement.rowIndex;
+        deleteArrival(rowElement.getAttribute("id"));
+        tableElement.deleteRow(index);
+    }
+    function addArrivalToTable(arrival){
+        var tableElement = document.getElementById('myTable')
+        var rowElement = tableElement.insertRow(-1)
+        rowElement.setAttribute('id',arrival.id)
+        var cell1 = rowElement.insertCell(0);
+        cell1.innerHTML = arrival.id
+        var cell2 = rowElement.insertCell(1);
+        cell2.innerHTML = arrival.airline
+        var cell3 = rowElement.insertCell(2);
+        cell3.innerHTML = arrival.origin
+        var cell4 = rowElement.insertCell(3);
+        cell4.innerHTML = arrival.destination
+		var cell5 = rowElement.insertCell(4);
+        cell5.innerHTML = arrival.flightnumber
+        var cell6 = rowElement.insertCell(5);
+        cell6.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+        var cell7 = rowElement.insertCell(6);
+        cell7.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+
+    }
+
+    function clearForm(){
+        var form = document.getElementById('createUpdateForm')
+
+        form.querySelector('input[name="airline"]').value=''
+        form.querySelector('input[name="origin"]').value=''
+        form.querySelector('input[name="destination"]').value=''		
+        form.querySelector('input[name="flightnumber"]').value=''
+    }
+    function getArrivalFromRow(rowElement){
+        var arrival ={}
+        arrival.id  = rowElement.getAttribute('id')
+        arrival.airline = rowElement.cells[1].firstChild.textContent
+        arrival.origin = rowElement.cells[2].firstChild.textContent
+        arrival.destination = rowElement.cells[3].firstChild.textContent
+		arrival.flightnumber = rowElement.cells[4].firstChild.textContent
+        return arrival
+    }
+    function setArrivalInRow(rowElement, arrival){
+        rowElement.cells[0].firstChild.textContent= arrival.id  
+        rowElement.cells[1].firstChild.textContent= arrival.airline
+        rowElement.cells[2].firstChild.textContent= arrival.origin
+        rowElement.cells[3].firstChild.textContent= arrival.destination
+		rowElement.cells[4].firstChild.textContent= arrival.flightnumber
+    }
+    function populateFormWithArrival(arrival){
+        var form = document.getElementById('createUpdateForm')
+        form.querySelector('input[name="id"]').disabled = true
+
+        form.querySelector('input[name="id"]').value  = arrival.id
+        form.querySelector('input[name="airline"]').value= arrival.airline
+        form.querySelector('input[name=origin"]').value= arrival.origin
+        form.querySelector('input[name="destination"]').value= arrival.destination
+		form.querySelector('input[name="flightnumber"]').value= arrival.flightnumber
+        return arrival
+    }
+    function getArrivalFromForm(){
+        var form = document.getElementById('createUpdateForm')
+        var arrival = {}
+        arrival.id = form.querySelector('input[name="id"]').value
+        arrival.airline = form.querySelector('input[name="airline"]').value
+        arrival.origin = form.querySelector('input[name="origin"]').value
+        arrival.destination = form.querySelector('input[name="destination"]').value
+		arrival.flightnumber = form.querySelector('input[name="flightnumber"]').value
+        console.log(JSON.stringify(arrival))
+        return arrival
+    }
+
+    
+
+
+
+
+// *******************************************************************************************************************8
+			// GET ALL ARRIVALS	
+			function getAll(){
+				$.ajax({
+					"url":"/arrivals",
+					"method":"GET",
+					"data":"",
+					"dataType":"JSON",
+					"success":function(result){
+						for (arrival of result){
+							addArrivalToTable(arrival);
+                }
+						//arrivalsArray = result
+						// Call function to build my table
+						//buildTable(arrivalsArray)
+						console.log(result)					
+					},
+					"error":function(xhr,status,error){
+						console.log("status:"+status+" message:"+error);
+					}
+				});
+			}
+			
+
+			// CREATE ARRIVAL
+			function createArrival(){
+				//console.log(JSON.stringify(arrival));
+				$.ajax({
+					"url": "http://sarahmcn25.pythonanywhere.com/arrivals",
+					"method":"POST",
+					"data":JSON.stringify(arrival),
+					"dataType": "JSON",
+					contentType: "application/json; charset=utf-8",
+					"success":function(result){
+						//console.log(result);
+						arrival.id = result.id
+						addArrivalToTable(arrival)
+						clearForm()
+						showViewAll()
+					},
+					"error":function(xhr,status,error){
+						console.log("error: "+status+" msg:"+error);
+					}
+				});
+			}
+
+			// UDPATE ARRIVAL
+			function updateArrival(arrival){
+					
+				console.log(JSON.stringify(arrival));
+				$.ajax({
+					"url": "http://sarahmcn25.pythonanywhere.com/arrivals/"+encodeURI(arrival.id),
+					"method":"PUT",
+					"data":JSON.stringify(arrival),
+					"dataType": "JSON",
+					contentType: "application/json; charset=utf-8",
+					"success":function(result){
+					   // console.log(result);
+						  
+					},
+					"error":function(xhr,status,error){
+						console.log("error: "+status+" msg:"+error);
+					}
+				});
+			}
+	
+			// DELETE ARRIVAL
+			function deleteArrival(id){
+				
+				//console.log(JSON.stringify('deleting '+id));
+				$.ajax({
+					"url": "http://sarahmcn25.pythonanywhere.com/arrivals/"+encodeURI(id),
+					"method":"DELETE",
+					"data":"",
+					"dataType": "JSON",
+					contentType: "application/json; charset=utf-8",
+					"success":function(result){
+						//console.log(result);
+						  
+					},
+					"error":function(xhr,status,error){
+						console.log("error: "+status+" msg:"+error);
+					}
+				});
+			}
+			
+			
+			// Calling main function
+			init()
+							
+	
 		
 		</script>	
+		
     </body>	
+	
 </html>

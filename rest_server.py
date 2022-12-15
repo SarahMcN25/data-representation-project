@@ -44,23 +44,6 @@ def getAll():
     return jsonify(arrivals)
 
 
-'''
-# FIND ARRIVAL BY ID 
-# curl http://127.0.0.1:5000/arrivals/2
-@app.route('/arrivals/<int:id>', methods=['GET'])
-def findById(id):
-    #return "served by find by id with id " + str(id) # debug
-
-    # Lambda searches arrivals and only return back specific id.
-    foundArrivals = list(filter (lambda t : t["ID"]== id, arrivals))
-
-    if len(foundArrivals) == 0:
-        return jsonify({}), 204
-
-    return jsonify(foundArrivals[0])
-'''
-
-
 # CREATE AN ARRIVAL
 # curl -X POST -H "content-type:application/json" -d "{\"Airline\":\"EasyJet\", \"Origin\":\"CDG\", \"Destination\":\"SNN\", \"Flight Number\":\"EZY6771\"}"  http://127.0.0.1:5000/arrivals
 @app.route('/arrivals', methods=['POST'])
