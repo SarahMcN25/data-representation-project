@@ -56,11 +56,11 @@ def create():
         abort(400)
 
     arrival = {
-        "ID":nextId, 
-        "Airline": request.json["Airline"], 
-        "Origin": request.json["Origin"],
-        "Destination": request.json["Destination"],
-        "Flight Number": request.json["Flight Number"]
+        "id":nextId, 
+        "airline": request.json["airline"], 
+        "origin": request.json["origin"],
+        "destination": request.json["destination"],
+        "flightnumber": request.json["flightnumber"]
     }
     newArrival = arrivalsDAO.create(arrival)
     # Append to arrivals, up an id and return in json form. 
@@ -75,7 +75,7 @@ def create():
 def update(id):
     #return "served by update with id " + str(id) #debug
 
-    foundArrivals = list(filter (lambda t : t["ID"]== id, arrivals))
+    foundArrivals = list(filter (lambda t : t["id"]== id, arrivals))
 
     if len(foundArrivals) == 0:
         return jsonify({}), 404
@@ -84,16 +84,16 @@ def update(id):
     #currentArrival = foundArrivals[0]
 
     if 'Airline' in request.json:
-        currentArrival['Airline'] = request.json['Airline']
+        currentArrival['airline'] = request.json['airline']
 
     if 'Origin' in request.json:
-        currentArrival['Origin'] = request.json['Origin']
+        currentArrival['origin'] = request.json['origin']
             
     if 'Destination' in request.json:
-        currentArrival['Destination'] = request.json['Destination']
+        currentArrival['destination'] = request.json['destination']
 
     if 'Flight Number' in request.json:
-        currentArrival['Flight Number'] = request.json['Flight Number']
+        currentArrival['flightnumber'] = request.json['flightnumber']
 
     return jsonify(currentArrival)
 
@@ -104,7 +104,7 @@ def update(id):
 def delete(id):
     #return "served by delete with id " + str(id) #debug
 
-    foundArrivals = list(filter (lambda t : t["ID"]== id, arrivals))
+    foundArrivals = list(filter (lambda t : t["id"]== id, arrivals))
 
     if len(foundArrivals) == 0:
         return jsonify({}), 404
