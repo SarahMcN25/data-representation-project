@@ -5,7 +5,7 @@
 import mysql.connector
 import config as cfg
 
-class ArrivalsDAO:
+class DeparturesDAO:
     host = ""
     user = ""
     password = ""
@@ -40,20 +40,20 @@ class ArrivalsDAO:
         self.cursor.close()
 
 
-    # GET ALL ARRIVALS
-    def getAllArrivals(self):
+    # GET ALL DEPARTURES
+    def getAllDepartures(self):
         cursor = self.getCursor()
-        sql="SELECT * FROM arrivals"
+        sql="SELECT * FROM departures"
         cursor.execute(sql)
         result = cursor.fetchall()
         self.closeAll()
         return result
 
 
-    # CREATE AN ARRIVAL
-    def createArrival(self, values):
+    # CREATE AN DEPARTURES
+    def createDeparture(self, values):
         cursor = self.getCursor()
-        sql="INSERT INTO arrivals (airline, origin, destination, flight_number, scheduled_arrival, actual_arrival) VALUES (%s, %s, %s, %s, %s, %s)"
+        sql="INSERT INTO departures (airline, origin, destination, flight_number, scheduled_departure, actual_departure) VALUES (%s, %s, %s, %s, %s, %s)"
         cursor.execute(sql, values)
 
         self.connection.commit()
@@ -62,26 +62,26 @@ class ArrivalsDAO:
         return newid
 
 
-    # UPDATE ARRIVAL
-    def updateArrival(self, values):
+    # UPDATE DEPARTURES
+    def updateDeparture(self, values):
         cursor = self.getCursor()
-        sql="UPDATE arrivals SET airline=%s, origin=%s, destination=%s, flight_number=%s, scheduled_arrival=%s, actual_arrival=%s WHERE id=%s"
+        sql="UPDATE departures SET airline=%s, origin=%s, destination=%s, flight_number=%s, scheduled_departure=%s, actual_departure=%s WHERE id=%s"
         cursor.execute(sql, values)
         self.connection.commit()
         self.closeAll()
 
 
-    # DELETE ARRIVAL
-    def deleteArrival(self, id):
+    # DELETE DEPARTURES
+    def deleteDeparture(self, id):
         cursor = self.getCursor()
-        sql="DELETE FROM arrivals WHERE id=%s"
+        sql="DELETE FROM departures WHERE id=%s"
         values = (id,)
 
         cursor.execute(sql, values)
 
         self.connection.commit()
         self.closeAll
-        print("Arrival deleted") 
+        print("Departure deleted") 
 
     
     # CREATE A DATABASE
@@ -101,22 +101,22 @@ class ArrivalsDAO:
     # CREATE A DATABASE TABLE
     def createTable(self):
         cursor = self.getcursor()
-        sql="CREATE TABLE arrivals (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, airline varchar(50), origin varchar(3), destination varchar(3), flight_number varchar(10), scheduled_arrival varchar(4), actual_arrival varchar(4))"
+        sql="CREATE TABLE departures (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, airline varchar(50), origin varchar(3), destination varchar(3), flight_number varchar(10), scheduled_departure varchar(4), actual_departure varchar(4))"
         cursor.execute(sql)
         self.connection.commit()
         self.closeAll()
 
 
-arrivalsDAO = ArrivalsDAO()
+departuresDAO = DeparturesDAO()
 
 '''
 # MAIN FUNCTION
  if __name__ == "__main__":
     # Once off setting up DB and table
-#   arrivalsDAO.createDatabase()
-#   arrivalsDAO.createTable()
+#   departuresDAO.createDatabase()
+#   departuresDAO.createTable()
     # TESTING DATA
     data = ('British Airways', 'BHX', 'SNN', 'BA6774')
-    arrivalsDAO.create(data)
+    departuresDAO.create(data)
     print("It works!")
 '''
