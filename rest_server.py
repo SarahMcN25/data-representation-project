@@ -1,12 +1,11 @@
-# This program creates an application server that will implement a RESTful API. 
+# This program creates an flask application server that will implement a RESTful API. 
 # Author: Sarah McNelis - G00398343
 
-# Code adapted from W8 lecture and labs: <https://web.microsoftstream.com/video/c575feed-7ee1-4eec-b70e-c1b49204146c?list=studio> 
+# Code adapted from W8 lecture and labs
 
 
 from flask import Flask, url_for, request, redirect, abort, jsonify
-from arrivalsDAO import arrivalsDAO
-from departuresDAO import departuresDAO
+from airportDAO import arrivalsDAO, departuresDAO
 
 
 app = Flask(__name__, static_url_path='', static_folder='static')
@@ -117,8 +116,8 @@ def createDeparture():
         "actualdeparture": request.json["actualdeparture"]
     }
     newDeparture = departuresDAO.createDeparture(departure)
-    # Append to arrivals, up an id and return in json form. 
-    #arrivals.append(arrival)
+    # Append to departures, up an id and return in json form. 
+    #departures.append(departure)
     nextId += 1
     return jsonify(newDeparture)
 
