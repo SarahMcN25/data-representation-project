@@ -1,6 +1,6 @@
 # Assessment: Data Representation Project
 
-by Sarah McNelis
+by Sarah McNelis - G00398343
 
 <br>
 
@@ -108,6 +108,12 @@ This repository contains:
 
 <br>
 
+<br>
+
+![create/update](images/createUpdate.jpg)
+
+<br>
+
 - `rest_server.py` - which creates an application server that will implement a RESTful API using Flask. 
 
 
@@ -133,7 +139,10 @@ This repository contains:
 - https://realpython.com/flask-connexion-rest-api/
 - https://getbootstrap.com/docs/3.4/css/ 
 - https://dev.mysql.com/doc/connector-python/en/connector-python-examples.html
-- 
+- https://dev.to/gyi2521/ajax---get-post-putand-delete--m9j
+- https://www.w3schools.com/html/html_scripts.asp
+- https://hackerthemes.com/bootstrap-cheatsheet/#navbar__bg-dark
+- https://levelup.gitconnected.com/create-interactive-html-tables-populated-with-api-data-dd5c467b0851
 
 <br>
 
