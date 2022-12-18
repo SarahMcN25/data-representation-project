@@ -6,8 +6,7 @@ by Sarah McNelis
 
 ## Introduction
 
-This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. The objective for this project was to write a program that creates and consumes RESTful APIs. This involves creating a web application in Flask which has a RESTful API. This application should also link to a database table. And there should also be webpages which consume the API by performing CRUD operations. 
-
+This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. The objective of this project is to write a program that creates and consumes RESTful APIs. This involves creating a web application in Flask which has a RESTful API. This application should also link to a database table. And there should also be webpages which consume the API by performing CRUD operations. I will be linking to two database tables. 
 <br>
  
 ## Setup
@@ -39,40 +38,47 @@ This repository contains my project work for Data Representation as part of my H
 
 1. Open wampserver
 2. Click on MySQL and then on MySQL console
-3. Enter user and password
+3. Enter username and password
 4. Once the console is open type `SHOW DATABASES;`
-5. For this I have named my database "project". So I would type `USE project;`
-6. Now in the database type `SHOW TABLES;`. This shows all tables available within that database. See image below of the current tables in my project database.  
+5. For this I have named my database "project". So to acces the database type `USE project;`
+6. To access the database tables `SHOW TABLES;`. This shows all tables available within that database. See image below of the current tables in my project database.  
+
 
 <br>
 
 ![show_table](images/show_tables.jpg)
 
 <br>
-7. To see the arrivals table type `SELECT * FROM arrivals;`. This produces the following table. 
 
-<br>
+7. To see the arrivals table type `SELECT * FROM arrivals;`
+
+
+<br><br>
 
 ![arrivals_table](images/arrivals.jpg)
 
 <br>
-8. To see the departures table type `SELECT * FROM departures;`. This produces the following table. 
 
-<br>
+8. To see the departures table type `SELECT * FROM departures;`
+
+
+<br><br>
 
 ![departures_table](images/departures.jpg)
 
 <br>
+
 9. These tables can be accessed and updated using SQL commands from my python scripts. See `airportDAO.py` and execute in the command line. 
 
 <br>
+
 
 ## Hosting the server
 
 I have chosen to host my server on [pythonanywhere.com](https://www.pythonanywhere.com/). This is a good, user-friendly hosting service for python websites. 
 
 
-If you would like to view my server on pythonanywhere.com please click on the following links:
+If you would like to view my server arrivals and departures on pythonanywhere.com please click on the following links:
 
 [Arrivals](http://sarahmcn25.pythonanywhere.com/arrivals)
 
@@ -91,7 +97,7 @@ This repository contains:
 
 <br>
 
-- `arrivals.html` - where I created a webpage based on fictional Shannon Airport arrival information. In this document you will find CRUD operations in the script section which allow the webpage to consume the API. 
+- `arrivals.html` - where I created a webpage based on fictional Shannon Airport arrival information. In this document you will find CRUD operations in the script section which allow the webpage to consume the API. For example, GET, POST, PUT and DELETE. The arrivals table is populated with data using AJAX calls to perform the GET operation. Similarily, if you click on Create an arrvials, you are making an AJAX call to POST to the server. Again, there is functionality to Update and Delete arrivals using AJAX calls to perform PUT and DELETE operations respectively. 
 
 <br>
 
@@ -99,7 +105,7 @@ This repository contains:
 
 <br>
 
-- `departures.html` - where I created a webpage based on fictional Shannon Airport departure information. You will also find CRUD operations in the script section which allow the webpage to consume the API. 
+- `departures.html` - where I created a webpage based on fictional Shannon Airport departure information. You will also find CRUD operations in the script section which allow the webpage to consume the API. This page uses the same functionality as `arrivals.html`. AJAX calls are made to perform CRUD operations to populate departures in a table, create, update and delete departures. 
 
 <br>
 
