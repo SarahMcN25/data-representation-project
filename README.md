@@ -43,18 +43,21 @@ This repository contains my project work for Data Representation as part of my H
 4. Once the console is open type `SHOW DATABASES;`
 5. For this I have named my database "project". So I would type `USE project;`
 6. Now in the database type `SHOW TABLES;`. This shows all tables available within that database. See image below of the current tables in my project database.  
+
 <br>
 
 ![show_table](images/show_tables.jpg)
 
 <br>
 7. To see the arrivals table type `SELECT * FROM arrivals;`. This produces the following table. 
+
 <br>
 
 ![arrivals_table](images/arrivals.jpg)
 
 <br>
 8. To see the departures table type `SELECT * FROM departures;`. This produces the following table. 
+
 <br>
 
 ![departures_table](images/departures.jpg)
@@ -63,10 +66,13 @@ This repository contains my project work for Data Representation as part of my H
 9. These tables can be accessed and updated using SQL commands from my python scripts. See `airportDAO.py` and execute in the command line. 
 
 
-### Hosting the server
+## Hosting the server
 
-I have chosen to host my server on ... 
-You can find the host server link [here]() 
+I have chosen to host my server on [pythonanywhere](https://www.pythonanywhere.com/) 
+
+You can find my arrivals [here](http://sarahmcn25.pythonanywhere.com/arrivals)
+
+And my departures [here](http://sarahmcn25.pythonanywhere.com/departures)
 
 <br>
 
