@@ -6,7 +6,10 @@ by Sarah McNelis
 
 ## Introduction
 
-This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. The objective of this project is to write a program that creates and consumes RESTful APIs. This involves creating a web application in Flask which has a RESTful API. This application should also link to a database table. And there should also be webpages which consume the API by performing CRUD operations. I will be linking to two database tables. 
+This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. The objective of this project is to write a program that creates and consumes RESTful APIs. This involves creating a web application in Flask which has a RESTful API. This application should also link to a database table. And there should also be webpages which consume the API by performing CRUD operations. 
+
+I have created a web application in Flask which links to two database tables and uses a RESTful API which is consumed by html webpages using AJAX calls to perfrom CRUD operations. 
+
 <br>
  
 ## Setup
@@ -44,31 +47,23 @@ This repository contains my project work for Data Representation as part of my H
 6. To access the database tables `SHOW TABLES;`. This shows all tables available within that database. See image below of the current tables in my project database.  
 
 
-<br>
-
 ![show_table](images/show_tables.jpg)
 
-<br>
 
 7. To see the arrivals table type `SELECT * FROM arrivals;`
 
 
-<br><br>
-
 ![arrivals_table](images/arrivals.jpg)
 
-<br>
 
 8. To see the departures table type `SELECT * FROM departures;`
 
 
-<br><br>
-
 ![departures_table](images/departures.jpg)
 
-<br>
 
 9. These tables can be accessed and updated using SQL commands from my python scripts. See `airportDAO.py` and execute in the command line. 
+
 
 <br>
 
@@ -97,7 +92,7 @@ This repository contains:
 
 <br>
 
-- `arrivals.html` - where I created a webpage based on fictional Shannon Airport arrival information. In this document you will find CRUD operations in the script section which allow the webpage to consume the API. For example, GET, POST, PUT and DELETE. The arrivals table is populated with data using AJAX calls to perform the GET operation. Similarily, if you click on Create an arrvials, you are making an AJAX call to POST to the server. Again, there is functionality to Update and Delete arrivals using AJAX calls to perform PUT and DELETE operations respectively. 
+- `arrivals.html` - where I created a webpage based on fictional Shannon Airport arrival information. In this document you will find CRUD operations in the script section which allow the webpage to consume the API. For example, GET, POST, PUT and DELETE. The arrivals table is populated with data using AJAX calls to perform the GET operation. Similarily, if you click on the Create Arrvials button, you are making an AJAX call to POST data to the server. There is also functionality to Update and Delete arrivals using AJAX calls to perform the PUT and DELETE operations respectively. 
 
 <br>
 
@@ -105,7 +100,7 @@ This repository contains:
 
 <br>
 
-- `departures.html` - where I created a webpage based on fictional Shannon Airport departure information. You will also find CRUD operations in the script section which allow the webpage to consume the API. This page uses the same functionality as `arrivals.html`. AJAX calls are made to perform CRUD operations to populate departures in a table, create, update and delete departures. 
+- `departures.html` - where I created a webpage based on fictional Shannon Airport departure information. This also contains CRUD operations in the script section which allow the webpage to consume the API. This page uses the same functionality as arrivals.html expect for departures data this time. AJAX calls are made to perform CRUD operations to populate departures in a table, to create, to update and delete departures. 
 
 <br>
 
@@ -115,7 +110,8 @@ This repository contains:
 
 - `rest_server.py` - which creates an application server that will implement a RESTful API using Flask. 
 
-- `airportDAO.py` - this program creates two classes - one for arrivals and one for departures. These contain functions to implement SQL commands from a python script. These classes are imported into the `rest_server.py` and used to perform CRUD operations. 
+
+- `airportDAO.py` - this program creates two classes - one for arrivals and one for departures. These contain functions to implement SQL commands from a python script. These classes are imported into the rest_server.py and used to perform CRUD operations. 
 
 <br>
 
