@@ -6,7 +6,7 @@ by Sarah McNelis
 
 ## Introduction
 
-This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. 
+This repository contains my project work for Data Representation as part of my Higher Diploma in Computing in Data Analytics. The objective for this project was to write a program that creates and consumes RESTful APIs. This involves creating a web application in Flask which has a RESTful API. This application should also link to a database table. And there should also be webpages which consume the API by performing CRUD operations. 
 
 <br>
  
@@ -65,14 +65,18 @@ This repository contains my project work for Data Representation as part of my H
 <br>
 9. These tables can be accessed and updated using SQL commands from my python scripts. See `airportDAO.py` and execute in the command line. 
 
+<br>
 
 ## Hosting the server
 
-I have chosen to host my server on [pythonanywhere](https://www.pythonanywhere.com/) 
+I have chosen to host my server on [pythonanywhere.com](https://www.pythonanywhere.com/). This is a good, user-friendly hosting service for python websites. 
 
-You can find my arrivals [here](http://sarahmcn25.pythonanywhere.com/arrivals)
 
-And my departures [here](http://sarahmcn25.pythonanywhere.com/departures)
+If you would like to view my server on pythonanywhere.com please click on the following links:
+
+[Arrivals](http://sarahmcn25.pythonanywhere.com/arrivals)
+
+[Departures](http://sarahmcn25.pythonanywhere.com/departures)
 
 <br>
 
